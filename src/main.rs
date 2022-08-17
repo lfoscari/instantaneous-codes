@@ -35,7 +35,16 @@ fn golomb(n: u64, b: u64) -> String {
 }
 
 fn main() {
-    for x in 0..6 {
-        println!("{:?} => {}", x, golomb(x, 3));
+    let m = 50;
+    let k = 5;
+
+    println!("{}", "-".repeat(96));
+    println!("| {: <6} | {: <6} | {: <14} | {: <11} | {: <10} | {: <14} | {: <13} |",
+        "Number", "Binary", "Reduced binary", "Gamma", "Delta", "Minimal binary", "Golomb (5)");
+
+    for x in 0..m {
+        println!("| {: >6?} | {: >6} | {: >14} | {: >11} | {: >10} | {: >14} | {: >13} |",
+            x, binary(x), reduced_binary(x), gamma(x), delta(x), minimal_binary(x, m), golomb(x, k));
     }
+    println!("{}", "-".repeat(96));
 }
